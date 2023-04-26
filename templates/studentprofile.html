@@ -1,0 +1,102 @@
+
+{% load static %}
+    <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+<!-- Bootstrap CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+<!-- Font Awesome CSS -->
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css'>
+
+
+<div class="student-profile py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent text-center">
+              <img class="profile_img" src={% static "index/img/team-2.jpg" %} alt="student dp" width="250" height="250">
+              <h3>{{i.name}}</h3>
+            </div>
+            <div class="card-body">
+              <p class="mb-0"><strong class="pr-1"></strong></p>
+              <p class="mb-0"><strong class="pr-1"></strong></p>
+              <p class="mb-0"><strong class="pr-1"></strong></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card shadow-sm">
+            <div class="card-header bg-transparent border-0">
+              <h3 class="mb-0"><i class="far fa-clone pr-1"></i>General Information</h3>
+            </div>
+            <div class="card-body pt-0">
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">Name</th>
+                  <td width="2%">:</td>
+                  <td>{{i.name}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Register Number	</th>
+                  <td width="2%">:</td>
+                  <td>{{i.regno}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Department</th>
+                  <td width="2%">:</td>
+                  <td>{{i.department}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Father's Name</th>
+                  <td width="2%">:</td>
+                  <td>{{i.fathername}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Mother's Name</th>
+                  <td width="2%">:</td>
+                  <td>{{i.mothername}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Guardian's Name</th>
+                  <td width="2%">:</td>
+                  <td>{{i.guardianname}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Year Of Joining</th>
+                  <td width="2%">:</td>
+                  <td>{{i.yearofjoining}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Gender</th>
+                  <td width="2%">:</td>
+                  <td>{{i.gender}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Admission No</th>
+                  <td width="2%">:</td>
+                  <td>{{i.admissionno}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Admission Type</th>
+                  <td width="2%">:</td>
+                  <td>{{i.admissiontype}}</td>
+                </tr>
+                <tr>
+                  <th width="30%">Date Of Birth</th>
+                  <td width="2%">:</td>
+                  <td>{{i.dob}}</td>
+                </tr>
+                
+                
+              </table>
+            </div>
+          </div>
+            <div style="height: 26px"></div>
+          <div class="card shadow-sm">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

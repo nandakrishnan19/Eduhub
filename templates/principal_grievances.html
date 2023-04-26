@@ -1,0 +1,75 @@
+{% extends 'principalbase.html' %}
+
+
+
+
+{% block content %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+</head>
+<body>
+<style>
+    th{
+    color:black;
+    font-weight:bold;
+    }
+    td{
+      color:black;
+
+
+    }
+    
+</style>
+
+  <div class="w3l_banner_info" style="height:10px">
+    <div class="slider1">
+      <div class="callbacks_container">
+        <ul class="rslides" id="slider3">
+          <li>
+            <div class="slider1-img" style="height:90px">
+              <div class="slider_banner_info">
+
+
+              </div>
+            </div>
+          </li>
+
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- //banner-slider -->
+</div>
+</header>
+
+<div class="container-fluid" style="margin-top:10%">
+               <div class="container">
+                            <div class="container-fluid">
+                               <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:5%" align="center">Grievances List</h2><hr>
+                            </div>
+                                <table class="table table-hover" >
+                                    <tr>
+                                      <th style="color:black">Name</th>
+                                      <th style="color:black">Email</th>
+                                      <th style="color:black">Subject</th>
+                                      <th style="color:black">Message</th>
+                                      
+                                  </tr>
+                              
+
+                              {% for k in inf%}
+                                <tr>
+                                  <td style="color:black">{{k.gname}}</td>
+                                  <td style="color:black">{{k.gemail}}</td>
+                                  <td style="color:black">{{k.gsubject}}</td>
+                                  <td style="color:black">{{k.gmessage}}</td>
+                              </tr>
+                              {% endfor %}
+                      </table>
+             </div>
+</div>
+</body>
+{% endblock content %}

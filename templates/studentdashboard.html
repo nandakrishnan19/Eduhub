@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eduhub</title>
+  <link rel="stylesheet" href={% static "index/css/studentstyle1.css" %}/>
+  <!-- Font Awesome Cdn Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <ul>
+        <li><a href="#" class="logo">
+          <img src={% static "index/css/images/logo1.png" %}></a></li>
+          <li><span class="nav-item">Welcome</span>
+        <!--</a>--></li>
+        <li><a href="#">
+          <i class="fas fa-menorah"></i>
+          <span class="nav-item">Dashboard</span>
+        </a></li>
+        <li><a href="#">
+          <i class="fas fa-comment"></i>
+          <span class="nav-item"> Marks</span>
+        </a></li>
+        <li><a href="#">
+          <i class="fas fa-database"></i>
+          <span class="nav-item">Upload Assignment</span>
+        </a></li>
+        <li><a href="#">
+          <i class="fas fa-chart-bar"></i>
+          <span class="nav-item">Attendance</span>
+        </a></li>
+        <li><a href="{% url 'studentprofile' %}">
+          <i class="fas fa-cog"></i>
+          <span class="nav-item">Profile</span>
+        </a></li>
+
+        <li><a href="#" class="logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="nav-item">Log out</span>
+        </a></li>
+      </ul>
+    </nav>
+
+
+    <section class="main">
+      <div class="main-top">
+        <h1>Syllabus</h1>
+        <i class="fas fa-user-cog"></i>
+      </div>
+      <div class="users">
+        <div class="card">
+          <img src={% static "index/css/images/info-removebg-preview.png" %}>
+          <h4>Semester</h4>
+          <p>5</p>
+          <div class="per">
+           
+          </div>
+          <button>view Syllabus</button>
+        </div>
+        <div class="card">
+          <img src={% static "index/css/images/info-removebg-preview.png" %}>
+          <h4>Semester</h4>
+          <p>3</p>
+          <div class="per">
+            
+          </div>
+          <button>view Syllabus</button>
+        </div>
+        <div class="card">
+          <img src={% static "index/css/images/info-removebg-preview.png" %}>
+          <h4>Semester</h4>
+          <p>1</p>
+          <div class="per">
+           
+          </div>
+          <button>view Syllabus</button>
+        </div>
+        <div class="card">
+            <img src={% static "index/css/images/info-removebg-preview.png" %}>
+          
+          <h4>Semester</h4>
+          <p>7</p>
+          <div class="per">
+           
+          </div>
+          <button>view Syllabus</button>
+        </div>
+      </div>
+
+      <section class="attendance">
+        <div class="attendance-list">
+          <h1>Leave</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Roll No</th>
+                <th>Name</th>
+                <th>Depart</th>
+                <th>Date</th>
+                
+                
+                <th>Subjects</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01</td>
+                <td>Datamining</td>
+                <td>CS</td>
+                <td>03-02-23</td>
+                
+                <td><!--<button>present</button>-->  <button>0%</button></td>
+              </tr>
+              <tr class="active">
+                <td>02</td>
+                <td>Distributed Computing</td>
+                <td>CS</td>
+                <td>03-02-23</td>
+                
+                <td><!--<button>Present</button>--> <button>0%</button></td>
+              </tr>
+              <tr>
+                <td>03</td>
+                <td>DeepLearning</td>
+                <td>CS</td>
+                <td>03-02-23</td>
+                
+                <td><!--<button>Present</button>--> <button>0%</button></td>
+              </tr>
+              <tr>
+                <td>04</td>
+                <td>IOT</td>
+                <td>CS</td>
+                <td>03-02-23</td>
+                
+                <td><!--<button>Present</button>--> <button>0%</button></td>
+              </tr>
+              <!-- <tr >
+                <td>05</td>
+                <td>Salina</td>
+                <td>Coding</td>
+                <td>03-24-22</td>
+                <td>9:00AM</td>
+                <td>4:00PM</td>
+                <td><button>View</button></td>
+              </tr>
+              <tr >
+                <td>06</td>
+                <td>Tara Smith</td>
+                <td>Testing</td>
+                <td>03-24-22</td>
+                <td>9:00AM</td>
+                <td>4:00PM</td>
+                <td><button>View</button></td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </div>
+
+</body>
+</html>

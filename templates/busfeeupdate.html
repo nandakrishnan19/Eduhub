@@ -1,0 +1,144 @@
+{% load static%}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link  href={% static "/index/css/officedashboard.css"%} rel="stylesheet">
+     
+   
+</head>
+
+
+
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <!--<img src="images/logo.png" alt="">-->
+            </div>
+
+            <span class="logo_name">Welcome</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="#">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name"> Bus Fees Update</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Exam fees update</span>
+                </a></li>
+     
+               
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="#">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="title">
+                    <span class="text">Office</span>
+                </div>
+            </div>
+        </div>
+                <div>
+                    <form name="form1" id="form1" action="busfee" method="post" >
+
+                      <label for="bus">Bus Route:</label>
+                      <select id="bus" name="Bus" required>
+                        <option value="">Select the Bus</option>
+                        <option value="option1">Alappuzha</option>
+                        <option value="option2">MEC Ernakulam</option>
+                        <option value="option3">Thoppumpadi</option>
+                      </select>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <label for="loc">Location:</label>
+                      <select id="alploc" name="alploc" required>
+                        <option value="">Select Location</option>
+                        <option value="option1">CEC-Cherthala</option>
+                        <option value="option2">CEC-.......</option>
+                        <option value="option3">CEC-.......</option>
+                        <option value="option3">CEC-.......</option>
+                        <option value="option3">CEC-.......</option>
+                        <option value="option3">CEC-.......</option>
+                        
+                      </select>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <label for="loc">Location:</label>
+                      <select id="mecloc" name="mecloc" required>
+                        <option value="">Select Location</option>
+                        <option value="option1">CEC-Thuravoor</option>
+                        <option value="option2">CEC-kuthiyathodu</option>
+                        <option value="option3">CEC-Ermalloor</option>
+                        <option value="option3">CEC-Aroor</option>
+                        <option value="option3">CEC-Madavana</option>
+                        <option value="option3">CEC-Nettoor</option>
+                        <option value="option3">CEC-kundannoor</option>
+                        <option value="option3">CEC-Vytila</option>
+                        <option value="option3">CEC-MEC</option>
+
+                        
+                      </select>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <label for="loc">Location:</label>
+                      <select id="tpmpdloc" name="tpmpdloc" required>
+                        <option value="">Select Location</option>
+                        <option value="option1">CEC-Cherthala</option>
+                        <option value="option2">CEC-Thurvoor</option>
+                        <option value="option3">CEC-Ermalloor</option>
+                        <option value="option3">CEC-Aroor</option>
+                        <option value="option3">CEC-Edakochi</option>
+                        <option value="option3">CEC-Thoppumpadi</option>
+                        
+                      </select>
+                       
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="oldfee" >Old Fee:</label>
+                        <input type="text" name="oldfee" required>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label for="oldfee" >New Fee:</label>
+                        <input type="text" name="newfee" required>
+                       <br><br>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                       <input type="submit" value="update"> 
+                       
+                       
+                      </form>
+                    
+                      </div>
+              
+                    
+                    <!-- JavaScript Libraries -->
+                    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+                    <script src={% static "index/lib/easing/easing.min.js" %}></script>
+                    <script src={%static "index/lib/waypoints/waypoints.min.js"%}></script>
+                    <script src={%static "index/lib/owlcarousel/owl.carousel.min.js"%}></script>
+                
+                    <!-- Template Javascript -->
+                    <script src={%static "index/js/Login.js"%}></script> 
+                            
+</body>
+</html>

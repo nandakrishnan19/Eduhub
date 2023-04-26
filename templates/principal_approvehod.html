@@ -1,0 +1,83 @@
+{% extends 'principalbase.html' %}
+
+{% block content %}
+
+<head>
+
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+
+</head>
+
+
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h6 class="panel-title">HOD</h6>
+
+      </div>
+
+      <table class="table table-hover table-striped table-bordered" id="dev-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Department</th>
+              <th></th>
+              <th></th>
+
+          
+              
+            </tr>
+          </thead>
+          <tbody>
+              {% for i in info %}
+            <tr>
+              <td>{{i.hname}}</td>
+              <td>{{i.hdepartment}}</td>
+              <td>
+                
+                <form method="post" action="{% url 'haccept' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="data" value={{i.hname}}>
+                  <button type="submit">accept</button>
+              </form></td>  
+              <td><form method="post" action="{% url 'hreject' %}">
+                {% csrf_token %}
+                <input type="hidden" name="data" value={{i.hname}}>
+                <button type="submit">reject</button>
+            </form></td>                 
+            
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+
+
+  </div>
+</div>
+
+
+<!--
+      written By : sumit kumar
+      -->
+{% endblock content %}
