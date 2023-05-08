@@ -1,0 +1,13 @@
+payment :{{msg}}
+your current stop is  {{stop}}
+change your stop
+<form action="busroute" method="POST">
+    {% csrf_token %}
+    <select id="route" name="route">
+        {% for i in tos %}
+        <option>{{i.to}}</option>
+        {% endfor %}
+      </select>
+            <input  type='submit'/> 
+</form>
+your bus fee is {{fe}}

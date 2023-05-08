@@ -47,6 +47,16 @@ urlpatterns = [
     path('examfeeupdate',views.examfeeupdate,name="examfeeupdate"),
     path('haccept',views.haccept,name="haccept"),
     path('hreject',views.hreject,name='hreject'),
+    path('busroute',views.busroute,name='busroute'),
+    path('replays',views.replays,name='replays'),
+    path('replayed',views.replayed,name='replayed'),
+    path('toteacher',views.toteacher,name='toteacher'),
+    path('tostudent',views.tostudent,name='tostudent'),
+
+
+
+
+
 
 
 ]

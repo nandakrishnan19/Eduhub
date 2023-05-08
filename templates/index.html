@@ -217,6 +217,18 @@
                     <p class="mb-0">MCA  :  60 seats </p>
                 </div>  
             </div>
+            <div class="col-lg-4 col-md-6">
+            
+                    <div class="d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width: 90px; height: 90px;">
+                        <i class="fa fa-balance-scale fa-2x"></i>
+                    </div>
+                    <h3 class="mb-3">Notice</h3>
+                    
+                    {% for i in al %}
+{{i.note}}
+{% endfor %}
+                
+            </div>
             
             </div>
         </div>

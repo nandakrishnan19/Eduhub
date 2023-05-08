@@ -1,0 +1,21 @@
+<form method="post" action="replayed">
+    {% csrf_token %}
+    <div class="row g-3">
+        
+        <div class="col-12">
+            <div class="form-floating">
+                <input type="text" name="subject" class="form-control" id="form-floating-3" placeholder="Subject">
+                <label for="form-floating-3">Subject</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea class="form-control" name="message" placeholder="Message" id="form-floating-4" style="height: 150px"></textarea>
+                <label for="form-floating-4">Message</label>
+              </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary w-100 py-3" type="submit">Submit</button>
+        </div>
+    </div>
+</form>

@@ -35,6 +35,9 @@ class AcceptedStudent(models.Model):
     dob=models.CharField(max_length=10)
     admissiontype=models.CharField(max_length=10)
     semester=models.CharField(max_length=10)
+    bus=models.CharField(max_length=20)
+    busfee=models.IntegerField(max_length=20)
+    avl=models.IntegerField(max_length=30)
 
 class Parent(models.Model):
     pname=models.CharField(max_length=10)
@@ -97,3 +100,9 @@ class Grivence(models.Model):
     gemail=models.CharField(max_length=100)
     gsubject=models.CharField(max_length=100)
     gmessage=models.CharField(max_length=100)
+class Bus(models.Model):
+    busname=models.CharField(max_length=20)
+    to=models.CharField(max_length=20)
+    busfees=models.IntegerField(max_length=10)
+class Notice(models.Model):
+    note=models.CharField(max_length=12345)

@@ -58,77 +58,27 @@
             </div>
         </div>
                 <div>
-                    <form name="form1" id="form1" action="busfee" method="post" >
-
-                      <label for="bus">Bus Route:</label>
-                      <select id="bus" name="Bus" required>
-                        <option value="">Select the Bus</option>
-                        <option value="option1">Alappuzha</option>
-                        <option value="option2">MEC Ernakulam</option>
-                        <option value="option3">Thoppumpadi</option>
-                      </select>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <label for="loc">Location:</label>
-                      <select id="alploc" name="alploc" required>
-                        <option value="">Select Location</option>
-                        <option value="option1">CEC-Cherthala</option>
-                        <option value="option2">CEC-.......</option>
-                        <option value="option3">CEC-.......</option>
-                        <option value="option3">CEC-.......</option>
-                        <option value="option3">CEC-.......</option>
-                        <option value="option3">CEC-.......</option>
-                        
-                      </select>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <label for="loc">Location:</label>
-                      <select id="mecloc" name="mecloc" required>
-                        <option value="">Select Location</option>
-                        <option value="option1">CEC-Thuravoor</option>
-                        <option value="option2">CEC-kuthiyathodu</option>
-                        <option value="option3">CEC-Ermalloor</option>
-                        <option value="option3">CEC-Aroor</option>
-                        <option value="option3">CEC-Madavana</option>
-                        <option value="option3">CEC-Nettoor</option>
-                        <option value="option3">CEC-kundannoor</option>
-                        <option value="option3">CEC-Vytila</option>
-                        <option value="option3">CEC-MEC</option>
-
-                        
-                      </select>
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                      <label for="loc">Location:</label>
-                      <select id="tpmpdloc" name="tpmpdloc" required>
-                        <option value="">Select Location</option>
-                        <option value="option1">CEC-Cherthala</option>
-                        <option value="option2">CEC-Thurvoor</option>
-                        <option value="option3">CEC-Ermalloor</option>
-                        <option value="option3">CEC-Aroor</option>
-                        <option value="option3">CEC-Edakochi</option>
-                        <option value="option3">CEC-Thoppumpadi</option>
-                        
-                      </select>
-                       
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="oldfee" >Old Fee:</label>
-                        <input type="text" name="oldfee" required>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <label for="oldfee" >New Fee:</label>
-                        <input type="text" name="newfee" required>
-                       <br><br>
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       <input type="submit" value="update"> 
-                       
-                       
-                      </form>
+                    <form action="busfeeupdate" method="POST">
+                        {% csrf_token %}
+                        <select id="route" name="route">
+                            {% for i in tos %}
+                            <option>{{i.to}}</option>
+                            {% endfor %}
+                          </select>
+                          <input  type='text' name="fee"/> 
+                                <input  type='submit'/> 
+                    </form>
                     
                       </div>
-              
+              list of students paid
+              {% for i in lists %}
+                            {{i.name}}
+                {% endfor %}
+                list of students not paid
+              {% for i in nlists %}
+                            {{i.name}}
+                {% endfor %}
+
                     
                     <!-- JavaScript Libraries -->
                     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

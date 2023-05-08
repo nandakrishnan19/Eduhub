@@ -3,10 +3,11 @@ from django.contrib import messages
 
 # Create your views here.
 from django.http import HttpResponse
-from .models import Student,Parent,Faculty,HOD,Officestaff,AcceptedStudent,Acceptedfaculty,Grivence,AcceptedHOD
+from .models import Student,Parent,Faculty,HOD,Officestaff,AcceptedStudent,Acceptedfaculty,Grivence,AcceptedHOD,Bus,Notice
 
 def index(request):
-    return render(request,'index.html')
+    al=Notice.objects.all()
+    return render(request,'index.html',{'al':al})
 
 
 def about(request):
@@ -37,8 +38,7 @@ def principal_approvefaculty(request):
 def academic_calender(request):
     return render(request,'academic_calender.html')
 
-def principal_notice(request):
-    return render(request,'principal_notice.html')
+
 
 
 #student login & signup
@@ -177,16 +177,16 @@ def accept(request):
     if request.method=="POST":
         reg=request.POST['data']
         hodep=toget()
-        userinfo=HOD.objects.all()
+        userinfo=AcceptedHOD.objects.all()
         for i in userinfo:
-            if i.hdepartment==hodep:
-                fyname=i.hname
+            if i.hhdepartment==hodep:
+                fyname=i.hhname
                 break
-        de=i.hdepartment
+        de=i.hhdepartment
         new=Student.objects.all()
         for j in new:
             if j.regno==reg:       
-                userinfo=AcceptedStudent(name=j.name,userid=j.userid,password1=j.password1,password2=j.password2,department=j.department,regno=j.regno,fathername=1,mothername=1,guardianname=1,guardianphn=1,guardianemail=1,yearofjoining=1,gender=1,admissionno=1,dob=1,admissiontype=1,semester=1,present=1,absent=1,percentage=1)
+                userinfo=AcceptedStudent(name=j.name,userid=j.userid,password1=j.password1,password2=j.password2,department=j.department,regno=j.regno,fathername=1,mothername=1,guardianname=1,guardianphn=1,guardianemail=1,yearofjoining=1,gender=1,admissionno=1,dob=1,admissiontype=1,semester=1,present=1,absent=1,percentage=1,bus=0,busfee=0,avl=0)
                 userinfo.save()
                 finfo=Student.objects.get(regno=reg)
                 finfo.delete()
@@ -200,12 +200,12 @@ def reject(request):
         if request.method=="POST":
             reg=request.POST['data']
             hodep=toget()
-            userinfo=HOD.objects.all()
+            userinfo=AcceptedHOD.objects.all()
             for i in userinfo:
-                if i.hdepartment==hodep:
-                    fyname=i.hname
+                if i.hhdepartment==hodep:
+                    fyname=i.hhname
                     break
-            de=i.hdepartment
+            de=i.hhdepartment
             new=Student.objects.all()
             for j in new:
                 if j.regno==reg:       
@@ -219,12 +219,12 @@ def ffaccept(request):
     if request.method=="POST":
         nam=request.POST['data']
         hodep=toget()
-        userinfo=HOD.objects.all()
+        userinfo=AcceptedHOD.objects.all()
         for i in userinfo:
-            if i.hdepartment==hodep:
-                fyname=i.hname
+            if i.hhdepartment==hodep:
+                fyname=i.hhname
                 break
-        de=i.hdepartment
+        de=i.hhdepartment
         new=Faculty.objects.all()
         for j in new:
             if j.fname==nam:       
@@ -343,12 +343,14 @@ def officedashboard(request):
     return render(request,"officedashboard.html")
 def principaldashboard(request):
     inf=Grivence.objects.all()
-    return render(request,"principaldashboard.html",{'inf':inf})
+    tcount=Acceptedfaculty.objects.count()
+    scount=AcceptedStudent.objects.count()
+    return render(request,"principaldashboard.html",{'inf':inf,'tcount':tcount,'scount':scount})
 def teacherprofile(request):
     fname=val()
-    fac = Faculty.objects.all()
+    fac = Acceptedfaculty.objects.all()
     for i in fac:
-        if fname == i.fname:
+        if fname == i.ffname:
             break
     return render(request,'teacherprofile.html',{'i':i})
 def studentprofile(request):
@@ -366,14 +368,35 @@ def grivence(request):
         subject=request.POST['subject']
         message=request.POST['message']
         print(name)
-        info=Grivence(gname=name,gemail=email,gsubject=subject,gmessage=message)
-        info.save()
+        try:
+            x=Grivence.objects.get(gemail=email)
+        except:    
+            info=Grivence(gname=name,gemail=email,gsubject=subject,gmessage=message)
+            info.save()
+        
+            print("success")
+            return render(request,"contact.html")
         return render(request,"contact.html")
 def principal_grievances(request):
         inf=Grivence.objects.all()
         return render(request,"principal_grievances.html",{'inf':inf})
 def busfeeupdate(request):
-    return render(request,"busfeeupdate.html")
+    if request.method=="POST":
+        tos=Bus.objects.all()
+        route=request.POST['route']
+        fee=request.POST['fee']
+        for i in tos:
+            if i.to==route:
+                break
+        i.busfees=fee
+        i.save()
+        lists=AcceptedStudent.objects.filter(avl=1)
+        nlists=AcceptedStudent.objects.filter(avl=0)
+        return render(request,"busfeeupdate.html",{'tos':tos,'lists':lists,'nlists':nlists})
+    lists=AcceptedStudent.objects.filter(avl=1)
+    nlists=AcceptedStudent.objects.filter(avl=0)
+    tos=Bus.objects.all()
+    return render(request,"busfeeupdate.html",{'tos':tos,'lists':lists,'nlists':nlists})
 def examfeeupdate(request):
     return render(request,"examfeeupdate.html")
 def principal_approvehod(request):
@@ -405,3 +428,106 @@ def hreject(request):
             info=HOD.objects.all()
             return render(request,'principal_approvehod.html',{'info':info})  
     return render(request,'principal_approvehod.html')
+def busroute(request):
+    tos=Bus.objects.all()
+    name=st()
+    check=AcceptedStudent.objects.all()
+    for i in check:
+        i.regno=name
+        break
+    if i.busfee==1:
+        msg="busfee is payed"
+    else:
+        msg="busfee is not payed"
+    stop=i.bus
+
+    if request.method=="POST":
+        tos=Bus.objects.all()
+        route=request.POST['route']
+        name=st()
+        check=AcceptedStudent.objects.all()
+        for i in check:
+            i.regno=name
+            print(name)
+            print(i.regno)
+            print(route)
+            break
+        print(i.bus)
+        i.bus=route
+        i.avl=1
+        i.save()
+        stop=i.bus
+        for i in tos:
+            i.to=route
+            break
+        fe=i.busfees
+
+        return render(request,'busroute.html',{'msg':msg,'tos':tos,'stop':stop,'fe':fe})
+
+    return render(request,'busroute.html',{'msg':msg,'tos':tos,'stop':stop})
+global to
+def replays(request):
+    if request.method=="POST":
+
+        tmail=request.POST['tmail']
+        global to
+        def to():
+            return tmail
+        return render(request,"replay.html")
+def replayed(request):
+    if request.method=="POST":
+        subject=request.POST['subject']
+        message=request.POST['message']
+        print(subject)
+        print(message)
+        try:
+            import smtplib
+            from email.message import EmailMessage
+
+            # Create a message object
+            msg = EmailMessage()
+            tos=to()
+            # Set the sender, recipient, subject, and body of the message
+            msg['From'] = 'eduhubcectl@gmail.com'
+            msg['To'] =to()
+            msg['Subject'] =subject
+            msg.set_content(message)
+
+            # Connect to the SMTP server
+            smtp_server = smtplib.SMTP('smtp.gmail.com', 587)
+            smtp_server.starttls()
+
+            # Login to your email account
+            username = 'eduhubcectl@gmail.com'
+            password = 'tpucdcdskwfmmxtt'
+            smtp_server.login(username, password)
+
+            # Send the message
+            smtp_server.send_message(msg)
+
+            # Disconnect from the SMTP server
+            smtp_server.quit()
+
+            print('Email sent successfully!')
+            finfo=Grivence.objects.get(gemail=tos)
+            finfo.delete()
+            inf=Grivence.objects.all()
+        except:
+            print("errorr")
+            pass
+        return render(request,"principal_grievances.html",{'inf':inf})
+def toteacher(request):
+    tot=Acceptedfaculty.objects.all()
+    return render(request,"toteacher.html",{'tot':tot})
+def tostudent(request):
+    tos=AcceptedStudent.objects.all()
+    return render(request,"tostudent.html",{'tos':tos})
+def principal_notice(request):
+    if request.method=="POST":
+        notes=request.POST['notes']
+        noted=Notice(note=notes)
+        noted.save()
+        tcount=Acceptedfaculty.objects.count()
+        scount=AcceptedStudent.objects.count()
+        return render(request,"principaldashboard.html",{'tcount':tcount,'scount':scount})
+    return render(request,'principal_notice.html')
